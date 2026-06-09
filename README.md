@@ -52,6 +52,15 @@ extra_gated_button_content: "Request access"
 # Biomedical BERT Embedding Quality & Inference Benchmark
 ### PubMedBERT Pass1 · PubMedBERT BODHI · BioBERT Fine-Tuned on Intel Xeon 6737P (Granite Rapids)
 
+[![Hugging Face — Model & Weights](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model%20%26%20Weights-FFD21E?style=for-the-badge)](https://huggingface.co/Dotsin/lbm-benchmarking-embeddingsFT)
+[![GitHub — Code](https://img.shields.io/badge/GitHub-Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dotsin/lbm-benchmarking-embeddingsFT)
+[![arXiv — Paper](https://img.shields.io/badge/arXiv-2606.09672-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2606.09672)
+[![License — Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-0A7EBE?style=for-the-badge)](LICENSE)
+
+> **Code:** [github.com/dotsin/lbm-benchmarking-embeddingsFT](https://github.com/dotsin/lbm-benchmarking-embeddingsFT) (this repository on GitHub does **not** include the model weights — `models/` is gitignored).
+> **Model weights (PT SafeTensors + OpenVINO BF16 IR):** [huggingface.co/Dotsin/lbm-benchmarking-embeddingsFT](https://huggingface.co/Dotsin/lbm-benchmarking-embeddingsFT) — private; request access via the Dotsin org.
+> **Paper:** [arXiv:2606.09672](https://arxiv.org/abs/2606.09672)
+
 Three fine-tuned biomedical BERT-base sentence-embedding models, designed around two questions:
 
 1. **Embedding quality** — does the geometry encode *causal* similarity between biomedical events, on top of the semantic similarity inherited from pre-training? Evaluated through event-pair separation, hard-negative ranking, BIOSSES-style correlation, domain geometry, and cosine fidelity under quantization.
