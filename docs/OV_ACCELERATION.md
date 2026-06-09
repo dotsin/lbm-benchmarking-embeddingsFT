@@ -1,7 +1,7 @@
 # Biomedical Embedding Layer — OpenVINO Acceleration Report
 ## OV Inference Benchmarks, BF16 Architecture Deep-Dive & Fine-Tuning Roadmap
 
-**Assessli | Dotsin.ai** — Generated: April 20, 2026
+**Dotsin.ai** — Generated: April 20, 2026
 
 ---
 
@@ -341,5 +341,5 @@ Saturates by bs=32–64. The dequantization kernel becomes the throughput bottle
 
 ---
 
-*Assessli | Dotsin.ai — Large Behavioral Model — BioBERT Embedding Layer*
+*Dotsin.ai — Large Behavioral Model — Biomedical Embedding Layer*
 *Source report: BioBERT_OV_Benchmark_Report_V2.docx, April 20, 2026*

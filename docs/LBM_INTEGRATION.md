@@ -1,15 +1,15 @@
 # Biomedical Embedding Layer — LBM Integration
 ## Causal-Similarity Sentence Embeddings for the Large Behavioral Model
 
-**Assessli | Dotsin.ai** — Generated: April 13, 2026
+**Dotsin.ai** — Generated: April 13, 2026
 
 ---
 
 ## 1. Executive Summary
 
-This document describes the biomedical sentence-embedding layer that sits in front of the **Large Behavioral Model (LBM)** ecosystem built by Assessli (Dotsin.ai). The production stack is three fine-tuned BERT-base encoders — **PubMedBERT BODHI**, **PubMedBERT Pass1**, and **BioBERT Fine-Tuned** — each producing a 768-dim vector. Two additional encoders evaluated during the study (BioM-ELECTRA Large and a three-model averaging ensemble) are reported here as comparison points; see [README §2.1](../README.md).
+This document describes the biomedical sentence-embedding layer that sits in front of the **Large Behavioral Model (LBM)** ecosystem built by Dotsin.ai. The production stack is three fine-tuned BERT-base encoders — **PubMedBERT BODHI**, **PubMedBERT Pass1**, and **BioBERT Fine-Tuned** — each producing a 768-dim vector. Two additional encoders evaluated during the study (BioM-ELECTRA Large and a three-model averaging ensemble) are reported here as comparison points; see [README §2.1](../README.md).
 
-**Scope of these embeddings.** The encoders described in this repository **do not feed the LBM model directly**. Their role is to index and retrieve a user's raw biomedical and behavioural data inside the **secure data hub** (clinical notes, journal entries, lab text, counselling transcripts, research context). When a downstream task is invoked, **information streams are assembled from the data hub** — selected and ordered by embedding proximity, timestamps, and access policy — and only those streams cross the boundary into the LBM service. The LBM consumes the streams and returns a **directed acyclic graph (DAG)** of behavioural inferences. Those DAGs are then traversed over Assessli's proprietary **LBM graph**, where millions of behavioural data points are plotted along causal chains induced from **counterfactual analysis** over the user's complete human metadata. The embedding layer therefore sits two hops before the LBM's own reasoning: it is the retrieval geometry for the data hub, not the input space of the LBM model itself.
+**Scope of these embeddings.** The encoders described in this repository **do not feed the LBM model directly**. Their role is to index and retrieve a user's raw biomedical and behavioural data inside the **secure data hub** (clinical notes, journal entries, lab text, counselling transcripts, research context). When a downstream task is invoked, **information streams are assembled from the data hub** — selected and ordered by embedding proximity, timestamps, and access policy — and only those streams cross the boundary into the LBM service. The LBM consumes the streams and returns a **directed acyclic graph (DAG)** of behavioural inferences. Those DAGs are then traversed over Dotsin's proprietary **LBM graph**, where millions of behavioural data points are plotted along causal chains induced from **counterfactual analysis** over the user's complete human metadata. The embedding layer therefore sits two hops before the LBM's own reasoning: it is the retrieval geometry for the data hub, not the input space of the LBM model itself.
 
 **Why we publish this.** This repository is intended to make our thought process on biomedical embedding design visible to the wider research community. Whoever wants to continue the work — building more efficient, more knowledgeable, more causally-aware sentence encoders along the direction set out here — has the full benchmark suite, the fine-tuned weights, the failure modes, and the comparison studies in their hands. The motivation behind every section below is to make the *reasoning* reproducible, not only the numbers.
 
@@ -25,7 +25,7 @@ Benchmarks were run on an **Intel Xeon 6737P dual-socket system** (128 logical C
 
 ![Training configuration: BODHI 14.8 h on 64-core AMX server, 72,034 pairs (28% PubMedQA+MedQA, 28% MedNLI+Wikidoc, 26% Mental Health, 17% BODHI triplets, 1% cross-domain hard negatives), lr=2e-5, Matryoshka-MNRL](../charts/training_config_and_data.png)
 
-The Large Behavioral Model (LBM) is an architecture developed by Assessli (Dotsin.ai) for modelling human behaviour across biomedical, psychological, and longitudinal dimensions. The LBM itself is a separate proprietary system; this repository describes the **retrieval-side embedding layer that prepares information streams for it**, not the LBM model. Wherever this document says "LBM", it refers to the downstream consumer of those streams.
+The Large Behavioral Model (LBM) is an architecture developed by Dotsin.ai for modelling human behaviour across biomedical, psychological, and longitudinal dimensions. The LBM itself is a separate proprietary system; this repository describes the **retrieval-side embedding layer that prepares information streams for it**, not the LBM model. Wherever this document says "LBM", it refers to the downstream consumer of those streams.
 
 ### 2.1 End-to-end data flow
 
@@ -277,7 +277,7 @@ Inside the data hub, embedding proximity is one of several signals used to assem
 | Temporal ordering | Timestamps on every record | Preserves cause-before-effect order in the emitted stream |
 | Policy and consent scope | Per-record access tags | Excludes records the requesting task is not authorised to see |
 
-The assembled stream — not the embedding vectors — is what crosses the boundary into the LBM service. The LBM then returns a **DAG of behavioural inferences**, which Assessli's proprietary LBM graph traverses against millions of behavioural data points connected by causal chains induced from counterfactual analysis.
+The assembled stream — not the embedding vectors — is what crosses the boundary into the LBM service. The LBM then returns a **DAG of behavioural inferences**, which Dotsin's proprietary LBM graph traverses against millions of behavioural data points connected by causal chains induced from counterfactual analysis.
 
 ### 8.2 Why Embedding Quality Determines Stream Quality
 
@@ -316,5 +316,5 @@ If the embedding fails to place causally linked records near each other across d
 
 ---
 
-*Assessli | Dotsin.ai — Large Behavioral Model — BioBERT Embedding Layer*
+*Dotsin.ai — Large Behavioral Model — Biomedical Embedding Layer*
 *Source report: BioBERT_LBM_Report.docx, April 13, 2026*

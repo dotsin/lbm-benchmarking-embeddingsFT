@@ -1,0 +1,283 @@
+{
+  "run_at": "2026-06-09T14:05:28.639871",
+  "variant": "pytorch-bf16",
+  "platform": {
+    "cpu_cores": 128,
+    "total_time_sec": 18.61
+  },
+  "models": {
+    "PubMedBERT BODHI": "/event_model/bioBErt_pocs/intel_xeon_biobert_bench/models/pytorch/pubmedbert_bodhi"
+  },
+  "b1_within_domain_similarity": {
+    "PubMedBERT BODHI": {
+      "genetics": 0.6156,
+      "biomarkers": 0.445,
+      "psychology": 0.6587,
+      "journal": 0.4456,
+      "clinical_notes": 0.3154,
+      "physiology": 0.4843
+    },
+    "Ensemble": {
+      "genetics": 0.6156,
+      "biomarkers": 0.445,
+      "psychology": 0.6587,
+      "journal": 0.4456,
+      "clinical_notes": 0.3154,
+      "physiology": 0.4843
+    }
+  },
+  "b2_cross_domain_discrimination": {
+    "PubMedBERT BODHI": {
+      "cross_domain_accuracy": 1.0,
+      "pair_scores": {
+        "genetics\u00d7journal": 0.2696,
+        "biomarkers\u00d7journal": 0.2838,
+        "genetics\u00d7finance": 0.3398,
+        "biomarkers\u00d7finance": 0.2041,
+        "psychology\u00d7genetics": 0.2688,
+        "journal\u00d7clinical": 0.2918,
+        "physiology\u00d7finance": 0.3246,
+        "journal\u00d7genetics": 0.2125
+      },
+      "avg_cross_domain_sim": 0.2744
+    },
+    "Ensemble": {
+      "cross_domain_accuracy": 1.0,
+      "pair_scores": {
+        "genetics\u00d7journal": 0.2696,
+        "biomarkers\u00d7journal": 0.2838,
+        "genetics\u00d7finance": 0.3398,
+        "biomarkers\u00d7finance": 0.2041,
+        "psychology\u00d7genetics": 0.2688,
+        "journal\u00d7clinical": 0.2918,
+        "physiology\u00d7finance": 0.3246,
+        "journal\u00d7genetics": 0.2125
+      },
+      "avg_cross_domain_sim": 0.2744
+    }
+  },
+  "b3_sts_spearman": {
+    "PubMedBERT BODHI": {
+      "spearman_rho": 0.8693,
+      "p_value": 0.001087,
+      "predictions": [
+        0.9108,
+        0.9629,
+        0.9534,
+        0.8903,
+        0.9148,
+        0.7411,
+        0.6,
+        0.2675,
+        0.344,
+        0.4039
+      ],
+      "gold_scores": [
+        0.95,
+        0.92,
+        0.89,
+        0.86,
+        0.93,
+        0.42,
+        0.31,
+        0.02,
+        0.01,
+        0.02
+      ]
+    },
+    "Ensemble": {
+      "spearman_rho": 0.8693,
+      "p_value": 0.001087,
+      "predictions": [
+        0.9108,
+        0.9629,
+        0.9534,
+        0.8903,
+        0.9148,
+        0.7411,
+        0.6,
+        0.2675,
+        0.344,
+        0.4039
+      ],
+      "gold_scores": [
+        0.95,
+        0.92,
+        0.89,
+        0.86,
+        0.93,
+        0.42,
+        0.31,
+        0.02,
+        0.01,
+        0.02
+      ]
+    }
+  },
+  "b4_throughput": {
+    "PubMedBERT BODHI": {
+      "batch_32": {
+        "sentences_per_sec": 72.1,
+        "total_time_sec": 2.498
+      },
+      "batch_64": {
+        "sentences_per_sec": 220.4,
+        "total_time_sec": 0.817
+      },
+      "batch_128": {
+        "sentences_per_sec": 709.0,
+        "total_time_sec": 0.254
+      },
+      "batch_256": {
+        "sentences_per_sec": 690.5,
+        "total_time_sec": 0.261
+      }
+    }
+  },
+  "b5_hard_negative_detection": {
+    "PubMedBERT BODHI": {
+      "accuracy": 1.0,
+      "avg_margin": 0.1218,
+      "details": [
+        {
+          "anchor": "BRCA1 pathogenic variant breast cancer risk",
+          "sim_pos": 0.8334,
+          "sim_neg": 0.8019,
+          "margin": 0.0314,
+          "correct": true
+        },
+        {
+          "anchor": "Patient persistent low mood and hopelessness",
+          "sim_pos": 0.7536,
+          "sim_neg": 0.5531,
+          "margin": 0.2005,
+          "correct": true
+        },
+        {
+          "anchor": "HbA1c 8.5% poor glycaemic control",
+          "sim_pos": 0.8434,
+          "sim_neg": 0.8016,
+          "margin": 0.0418,
+          "correct": true
+        },
+        {
+          "anchor": "DNA methylation silences tumour suppressor genes",
+          "sim_pos": 0.8799,
+          "sim_neg": 0.7181,
+          "margin": 0.1619,
+          "correct": true
+        },
+        {
+          "anchor": "Anxiety disorder GAD-7 score 15 severe",
+          "sim_pos": 0.7711,
+          "sim_neg": 0.5979,
+          "margin": 0.1732,
+          "correct": true
+        }
+      ]
+    },
+    "Ensemble": {
+      "accuracy": 1.0,
+      "avg_margin": 0.1218,
+      "details": [
+        {
+          "anchor": "BRCA1 pathogenic variant breast cancer risk",
+          "sim_pos": 0.8334,
+          "sim_neg": 0.8019,
+          "margin": 0.0314,
+          "correct": true
+        },
+        {
+          "anchor": "Patient persistent low mood and hopelessness",
+          "sim_pos": 0.7536,
+          "sim_neg": 0.5531,
+          "margin": 0.2005,
+          "correct": true
+        },
+        {
+          "anchor": "HbA1c 8.5% poor glycaemic control",
+          "sim_pos": 0.8434,
+          "sim_neg": 0.8016,
+          "margin": 0.0418,
+          "correct": true
+        },
+        {
+          "anchor": "DNA methylation silences tumour suppressor genes",
+          "sim_pos": 0.8799,
+          "sim_neg": 0.7181,
+          "margin": 0.1619,
+          "correct": true
+        },
+        {
+          "anchor": "Anxiety disorder GAD-7 score 15 severe",
+          "sim_pos": 0.7711,
+          "sim_neg": 0.5979,
+          "margin": 0.1732,
+          "correct": true
+        }
+      ]
+    }
+  },
+  "b6_domain_geometry": {
+    "PubMedBERT BODHI": {
+      "avg_intra_domain_dist": 0.5059,
+      "avg_inter_domain_dist": 0.4699,
+      "inter_intra_ratio": 0.9288,
+      "intra_by_domain": {
+        "genetics": 0.3844,
+        "biomarkers": 0.555,
+        "psychology": 0.3413,
+        "journal": 0.5544,
+        "clinical_notes": 0.6846,
+        "physiology": 0.5157
+      },
+      "inter_by_pair": {
+        "genetics\u00d7biomarkers": 0.4763,
+        "genetics\u00d7psychology": 0.5904,
+        "genetics\u00d7journal": 0.6775,
+        "genetics\u00d7clinical_notes": 0.4454,
+        "genetics\u00d7physiology": 0.5047,
+        "biomarkers\u00d7psychology": 0.4594,
+        "biomarkers\u00d7journal": 0.4905,
+        "biomarkers\u00d7clinical_notes": 0.469,
+        "biomarkers\u00d7physiology": 0.2288,
+        "psychology\u00d7journal": 0.2818,
+        "psychology\u00d7clinical_notes": 0.4499,
+        "psychology\u00d7physiology": 0.5184,
+        "journal\u00d7clinical_notes": 0.5027,
+        "journal\u00d7physiology": 0.495,
+        "clinical_notes\u00d7physiology": 0.4585
+      }
+    },
+    "Ensemble": {
+      "avg_intra_domain_dist": 0.5059,
+      "avg_inter_domain_dist": 0.4699,
+      "inter_intra_ratio": 0.9288,
+      "intra_by_domain": {
+        "genetics": 0.3844,
+        "biomarkers": 0.555,
+        "psychology": 0.3413,
+        "journal": 0.5544,
+        "clinical_notes": 0.6846,
+        "physiology": 0.5157
+      },
+      "inter_by_pair": {
+        "genetics\u00d7biomarkers": 0.4763,
+        "genetics\u00d7psychology": 0.5904,
+        "genetics\u00d7journal": 0.6775,
+        "genetics\u00d7clinical_notes": 0.4454,
+        "genetics\u00d7physiology": 0.5047,
+        "biomarkers\u00d7psychology": 0.4594,
+        "biomarkers\u00d7journal": 0.4905,
+        "biomarkers\u00d7clinical_notes": 0.469,
+        "biomarkers\u00d7physiology": 0.2288,
+        "psychology\u00d7journal": 0.2818,
+        "psychology\u00d7clinical_notes": 0.4499,
+        "psychology\u00d7physiology": 0.5184,
+        "journal\u00d7clinical_notes": 0.5027,
+        "journal\u00d7physiology": 0.495,
+        "clinical_notes\u00d7physiology": 0.4585
+      }
+    }
+  }
+}

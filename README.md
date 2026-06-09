@@ -28,7 +28,7 @@ library_name: transformers
 gated: auto
 extra_gated_heading: "Access to the Biomedical Causal-Similarity Embedding Layer"
 extra_gated_description: |
-  These models are released by Assessli (Dotsin.ai) as the open biomedical sentence-embedding
+  These models are released by Dotsin.ai as the open biomedical sentence-embedding
   layer that fronts a secure data hub. To download the weights you must sign in with a
   Hugging Face account and accept the terms below. Access is granted automatically once the
   form is submitted; we keep a record of who has accepted.
@@ -69,9 +69,9 @@ Model weights ship as **PyTorch SafeTensors** and **OpenVINO BF16 IR**, ready to
 
 ## Why This Work Exists
 
-These models are the **sentence-embedding layer of a secure biomedical data hub** built by [Assessli (Dotsin.ai)](https://assessli.com). The hub stores a user's raw textual life data — clinical notes, journal entries, counselling transcripts, lab text, research context — and uses these 768-dim embeddings to index it. When a downstream task asks the hub for information about a user, the hub assembles an **information stream**: records selected and ordered by embedding proximity, timestamps, and access policy. That stream — not the embeddings — is what crosses the boundary into Assessli's **Large Behavioral Model (LBM)** service.
+These models are the **sentence-embedding layer of a secure biomedical data hub** built by [Dotsin.ai](https://dotsin.ai). The hub stores a user's raw textual life data — clinical notes, journal entries, counselling transcripts, lab text, research context — and uses these 768-dim embeddings to index it. When a downstream task asks the hub for information about a user, the hub assembles an **information stream**: records selected and ordered by embedding proximity, timestamps, and access policy. That stream — not the embeddings — is what crosses the boundary into Dotsin's **Large Behavioral Model (LBM)** service.
 
-The LBM consumes streams and returns a **DAG of behavioural inferences**. The DAG is then traversed over Assessli's proprietary **LBM graph**, in which millions of behavioural data points are plotted along causal chains induced from **counterfactual analysis** over the user's complete human metadata. The encoders in this repository sit two hops before that reasoning step — they are the retrieval geometry for the data hub, not features that the LBM model consumes. The LBM and the proprietary graph remain closed; this repository is the open layer.
+The LBM consumes streams and returns a **DAG of behavioural inferences**. The DAG is then traversed over Dotsin's proprietary **LBM graph**, in which millions of behavioural data points are plotted along causal chains induced from **counterfactual analysis** over the user's complete human metadata. The encoders in this repository sit two hops before that reasoning step — they are the retrieval geometry for the data hub, not features that the LBM model consumes. The LBM and the proprietary graph remain closed; this repository is the open layer.
 
 For stream assembly to give the LBM a faithful causal picture, the embedding geometry has to satisfy two requirements:
 

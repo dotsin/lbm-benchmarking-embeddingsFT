@@ -1,6 +1,6 @@
 # Fine-Tuning Guide
 
-This guide is the recipe behind the production weights in `models/pytorch/` and `models/openvino/`. It is written so that someone outside Assessli can reproduce the run, extend it on new data, or replace the BERT-base backbone with a different encoder while keeping the **causal-similarity objective** intact.
+This guide is the recipe behind the production weights in `models/pytorch/` and `models/openvino/`. It is written so that anyone outside Dotsin.ai can reproduce the run, extend it on new data, or replace the BERT-base backbone with a different encoder while keeping the **causal-similarity objective** intact.
 
 The training pipeline runs in two passes:
 
@@ -67,11 +67,11 @@ Final training composition (Pass 1 mix, after deduplication and domain balancing
 
 ## 3. Pass 2 — BODHI graph-grounded triplets
 
-Pass 2 is where causal similarity is installed. The training data is **not** a pre-existing public dataset; it is exported from Assessli's BODHI biomedical ontology graph. The exported triplets follow the format documented in [`examples/sample_data/finetuning_triplets.jsonl`](../examples/sample_data/finetuning_triplets.jsonl) and described in [`examples/README.md` §5](../examples/README.md#5-finetuning_tripletsjsonl--pass-2-bodhi-style-training-data).
+Pass 2 is where causal similarity is installed. The training data is **not** a pre-existing public dataset; it is exported from Dotsin's BODHI biomedical ontology graph. The exported triplets follow the format documented in [`examples/sample_data/finetuning_triplets.jsonl`](../examples/sample_data/finetuning_triplets.jsonl) and described in [`examples/README.md` §5](../examples/README.md#5-finetuning_tripletsjsonl--pass-2-bodhi-style-training-data).
 
 ### Where to obtain the BODHI export
 
-The BODHI ontology and its triplet export are part of Assessli's proprietary biomedical knowledge graph (Dotsin LBM stack). For research collaborations you can request a snapshot via the gated form on the model card — fill in `Intended use` with "BODHI training data". A signed data-use agreement is required because the export embeds curated literature evidence; once signed you receive the BODHI CSV bundle that `code/finetune_pubmed_bodhi.py` reads via `models/BODHI/`.
+The BODHI ontology and its triplet export are part of Dotsin's proprietary biomedical knowledge graph (Dotsin.ai LBM stack). For research collaborations you can request a snapshot via the gated form on the model card — fill in `Intended use` with "BODHI training data". A signed data-use agreement is required because the export embeds curated literature evidence; once signed you receive the BODHI CSV bundle that `code/finetune_pubmed_bodhi.py` reads via `models/BODHI/`.
 
 If you do not have BODHI access, you can still reproduce Pass 2 by **generating your own ontology-grounded triplets** from a public graph (UMLS, SNOMED-CT, MeSH, HPO, MONDO). The schema and the distance-level breakdown below tell you exactly what shape to produce. See §5 "Synthetic-data generation" for the recipe.
 
