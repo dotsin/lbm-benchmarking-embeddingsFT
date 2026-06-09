@@ -18,6 +18,7 @@ tags:
   - quantization
   - event-separation
   - clinical-nlp
+  - arxiv:2606.09672
 task_categories:
   - feature-extraction
   - sentence-similarity
