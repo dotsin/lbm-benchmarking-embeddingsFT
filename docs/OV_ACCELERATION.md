@@ -342,4 +342,12 @@ Saturates by bs=32–64. The dequantization kernel becomes the throughput bottle
 ---
 
 *Dotsin.ai — Large Behavioral Model — Biomedical Embedding Layer*
+
+---
+
+## Acknowledgements
+
+All inference, quantization, and benchmark numbers in this document were produced on an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system provided to Dotsin.ai by **Intel Corporation**, using Intel's open AMX-BF16 / AMX-INT8 path via OpenVINO 2026.1, NNCF 3.1, and oneDNN. We thank Intel for the hardware and for the open software stack that lets us dispatch BERT-class workloads to AMX tiles directly. The weights released here are the open public version of one layer of Dotsin.ai's larger embedding system; full credits in [`../ACKNOWLEDGEMENTS.md`](../ACKNOWLEDGEMENTS.md).
+
+*Intel, the Intel logo, Intel Xeon, AMX, OpenVINO, oneAPI, oneDNN and VTune are trademarks of Intel Corporation or its subsidiaries.*
 *Source report: BioBERT_OV_Benchmark_Report_V2.docx, April 20, 2026*

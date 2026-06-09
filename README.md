@@ -118,6 +118,7 @@ OpenVINO acceleration deep-dive: [`docs/OV_ACCELERATION.md`](docs/OV_ACCELERATIO
 | **LBM architecture & motivation** | [`docs/LBM_INTEGRATION.md`](docs/LBM_INTEGRATION.md) |
 | **OpenVINO acceleration deep-dive** | [`docs/OV_ACCELERATION.md`](docs/OV_ACCELERATION.md) |
 | **Headline results (one page)** | [`RESULTS.md`](RESULTS.md) |
+| **Acknowledgements (Intel hardware, datasets, base models)** | [`ACKNOWLEDGEMENTS.md`](ACKNOWLEDGEMENTS.md) |
 | **Examples & data formats** | [`examples/README.md`](examples/README.md) |
 | **Fine-tuning guide (datasets, BODHI, synthetic data, schemas)** | [`docs/FINETUNING.md`](docs/FINETUNING.md) |
 | Runnable quickstart | [`examples/quickstart_embed.py`](examples/quickstart_embed.py) |
@@ -649,3 +650,15 @@ DRAM bandwidth at peak: ~113.5 GB/s (32srv+HT / 600c), rising to ~139 GB/s at sa
 | Production p50 latency | **57–67 ms** at 600 concurrent clients |
 | Recommended serve config | 32 workers + HT · 600 clients · bs=256 · numactl 0,1 |
 | Total repo size | ~1.9 GB (3× PyTorch ~420 MB + 3× OV ~207 MB) |
+
+---
+
+## Acknowledgements
+
+This work was made possible by an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system provided to Dotsin.ai by **Intel Corporation**. The two-pass fine-tune (Pass 1 multi-dataset → Pass 2 BODHI ontology triplets, ~21 h total wall-clock) and the OpenVINO INT8 quantization sweep all ran on this hardware via Intel's open AMX-BF16 / AMX-INT8 path (OpenVINO 2026.1, NNCF 3.1, oneDNN). We are grateful to Intel both for the device and for the open software stack that lets us route BERT-class workloads to AMX tiles directly.
+
+The weights and benchmark suite released here are the **open public version of one layer of Dotsin.ai's larger system**. Dotsin maintains a deeper-tuned proprietary causal-similarity embedding stack trained against the full BODHI ontology and additional behavioural corpora that we cannot publish for consent, privacy, and clinical-evidence reasons; the LBM service and the proprietary LBM graph remain closed. This repository exists so the open biomedical-NLP community can see the research direction, evaluate the causal-axis framing on their own data, and build something stronger on top of it.
+
+Full acknowledgements, base-model credits, and dataset attributions: [`ACKNOWLEDGEMENTS.md`](ACKNOWLEDGEMENTS.md). Machine-readable software citation: [`CITATION.cff`](CITATION.cff). Paper: [arXiv:2606.09672](https://arxiv.org/abs/2606.09672).
+
+*Intel, the Intel logo, Intel Xeon, AMX, OpenVINO, oneAPI, oneDNN and VTune are trademarks of Intel Corporation or its subsidiaries.*

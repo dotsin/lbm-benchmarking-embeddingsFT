@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Biomedical BERT Embedding Quality & Inference Benchmark — A Causal-Similarity Sentence Embedding Layer for the Large Behavioral Model"
+abstract: >
+  Three fine-tuned biomedical BERT-base sentence-embedding models (PubMedBERT BODHI,
+  PubMedBERT Pass 1, BioBERT Fine-Tuned), released as the open public version of the
+  retrieval-side embedding layer used by Dotsin.ai's Large Behavioral Model (LBM)
+  ecosystem. Trained for causal similarity on top of semantic similarity, evaluated
+  on Intel Xeon 6737P (Granite Rapids) with AMX-BF16 / AMX-INT8 acceleration via
+  OpenVINO and NNCF. Includes a comparison study with BioM-ELECTRA Large and a
+  three-model averaging ensemble.
+type: software
+authors:
+  - name: "Dotsin.ai"
+    website: "https://dotsin.ai"
+repository-code: "https://github.com/dotsin/lbm-benchmarking-embeddingsFT"
+url: "https://huggingface.co/Dotsin/lbm-benchmarking-embeddingsFT"
+license: Apache-2.0
+keywords:
+  - biomedical
+  - bert
+  - sentence-embeddings
+  - causal-similarity
+  - openvino
+  - intel-xeon
+  - amx
+  - clinical-nlp
+  - large-behavioral-model
+preferred-citation:
+  type: article
+  title: "Biomedical BERT Embedding Quality & Inference Benchmark — A Causal-Similarity Sentence Embedding Layer for the Large Behavioral Model"
+  authors:
+    - name: "Dotsin.ai"
+  year: 2026
+  journal: arXiv
+  url: "https://arxiv.org/abs/2606.09672"
+  identifiers:
+    - type: other
+      value: "arXiv:2606.09672"
+references:
+  - type: software
+    title: "OpenVINO™ Toolkit"
+    authors:
+      - name: "Intel Corporation"
+    url: "https://github.com/openvinotoolkit/openvino"
+  - type: software
+    title: "Neural Network Compression Framework (NNCF)"
+    authors:
+      - name: "Intel Corporation"
+    url: "https://github.com/openvinotoolkit/nncf"

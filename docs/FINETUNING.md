@@ -13,7 +13,7 @@ The Pass 2 step is what installs the second axis (causal similarity) on top of t
 
 ## 1. Hardware & environment
 
-The production run used a dual-socket **Intel Xeon 6737P (Granite Rapids)** — 2 sockets × 32 cores, 128 logical CPUs, 1 TB DDR5-6400, AMX-BF16. Pass 1 takes ~6.5 h, Pass 2 takes ~14.8 h on this hardware.
+The production run used a dual-socket **Intel® Xeon® 6737P (Granite Rapids)** kindly provided to Dotsin.ai by **Intel Corporation** — 2 sockets × 32 cores, 128 logical CPUs, 1 TB DDR5-6400, AMX-BF16. Pass 1 takes ~6.5 h, Pass 2 takes ~14.8 h on this hardware. See [`ACKNOWLEDGEMENTS.md`](../ACKNOWLEDGEMENTS.md) for the full hardware and toolchain credit.
 
 You do **not** need this exact box. The training script auto-scales to whatever cores it sees and switches AMX kernels on/off via `ONEDNN_MAX_CPU_ISA`. On a single-socket 16-core machine expect ~10× longer wall-clock. GPU training is supported by `sentence-transformers` out of the box but the script defaults to CPU + AMX because the production fleet is CPU-only.
 

@@ -317,4 +317,10 @@ If the embedding fails to place causally linked records near each other across d
 ---
 
 *Dotsin.ai — Large Behavioral Model — Biomedical Embedding Layer*
+
+---
+
+## Acknowledgements
+
+The weights, benchmarks, and geometry diagnostics in this document were produced on an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system provided to Dotsin.ai by **Intel Corporation**. We thank Intel for the hardware and for the open AMX / OpenVINO / oneDNN toolchain that made the two-pass fine-tune and the production-scale quantization sweep tractable on CPU. The encoders described here are the **open public version** of one layer of Dotsin.ai's larger system; Dotsin maintains a deeper-tuned proprietary causal-similarity embedding stack trained against the full BODHI ontology and additional behavioural corpora, and the LBM service and proprietary LBM graph remain closed. This repository is published so the open biomedical-NLP community can evaluate the causal-axis research direction and build on it. Full credits: [`../ACKNOWLEDGEMENTS.md`](../ACKNOWLEDGEMENTS.md).
 *Source report: BioBERT_LBM_Report.docx, April 13, 2026*
