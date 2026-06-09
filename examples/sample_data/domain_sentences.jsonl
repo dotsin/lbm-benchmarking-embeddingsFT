@@ -1,0 +1,18 @@
+{"domain": "genetics", "sentence": "BRCA1 pathogenic variant c.5266dupC detected in germline"}
+{"domain": "genetics", "sentence": "TP53 missense mutation R175H associated with Li-Fraumeni syndrome"}
+{"domain": "genetics", "sentence": "EGFR exon 19 deletion driver mutation in non-small cell lung cancer"}
+{"domain": "biomarkers", "sentence": "Serum cortisol 28.4 μg/dL, above reference range 6–23 μg/dL"}
+{"domain": "biomarkers", "sentence": "HbA1c 8.5%, fasting plasma glucose 186 mg/dL, insulin resistance suspected"}
+{"domain": "biomarkers", "sentence": "C-reactive protein 18 mg/L elevated, ESR 45 mm/hr indicating inflammation"}
+{"domain": "psychology", "sentence": "Patient describes persistent low mood, anhedonia and early morning waking"}
+{"domain": "psychology", "sentence": "GAD-7 score 15 indicates severe generalised anxiety symptoms"}
+{"domain": "psychology", "sentence": "PHQ-9 score 18 severe depression with passive suicidal ideation"}
+{"domain": "journal", "sentence": "Slept four hours last night, anxious all morning, skipped breakfast"}
+{"domain": "journal", "sentence": "Felt overwhelmed at work today, ruminating about feedback from manager"}
+{"domain": "journal", "sentence": "Took 30-minute walk after dinner, mood lifted noticeably afterwards"}
+{"domain": "clinical_notes", "sentence": "Patient presents with three-week history of fatigue and unintentional weight loss"}
+{"domain": "clinical_notes", "sentence": "Started SSRI sertraline 50 mg daily; review in 6 weeks for tolerance and effect"}
+{"domain": "clinical_notes", "sentence": "Admitted for community-acquired pneumonia, empirical amoxicillin commenced"}
+{"domain": "physiology", "sentence": "HPA axis activation: hypothalamic CRH triggers pituitary ACTH and adrenal cortisol"}
+{"domain": "physiology", "sentence": "Insulin binds receptor, activates GLUT4 translocation, lowering blood glucose"}
+{"domain": "physiology", "sentence": "Baroreceptor reflex stabilises blood pressure via sympathetic outflow modulation"}

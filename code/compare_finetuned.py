@@ -24,6 +24,9 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--model", default="biobert", choices=["pubmed","bodhi","biobert"])
 ap.add_argument("--variants", nargs="+", default=ALL_VARIANTS, choices=ALL_VARIANTS)
 ap.add_argument("--out-dir", default=None)
+ap.add_argument("--data-file", default=None,
+                help="Optional JSONL of connected/disconnected pairs "
+                     "(schema: examples/README.md §1). Overrides the built-in literals.")
 args = ap.parse_args()
 
 from config import PT_PATHS, OV_PATHS, SENTENCES
@@ -76,6 +79,7 @@ CONNECTED = [
     ("APOE e4 allele amyloid accumulation Alzheimer disease risk",
      "Cognitive decline progressive memory loss executive dysfunction in 65yo"),
 ]
+_DEFAULT_CONNECTED = CONNECTED
 DISCONNECTED = [
     ("BRCA1 pathogenic variant detected in germline DNA sequencing",
      "Patient reports work-related stress and difficulty sleeping for two weeks"),
@@ -104,6 +108,16 @@ DISCONNECTED = [
     ("EGFR mutation lung adenocarcinoma tyrosine kinase inhibitor",
      "Weather forecast predicts heavy rain and strong winds this weekend"),
 ]
+_DEFAULT_DISCONNECTED = DISCONNECTED
+
+if args.data_file:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    from examples.load_pairs import load_connected_disconnected
+    _rows = load_connected_disconnected(args.data_file)
+    CONNECTED    = [(r["sentence_a"], r["sentence_b"]) for r in _rows if r["label"] == "connected"]
+    DISCONNECTED = [(r["sentence_a"], r["sentence_b"]) for r in _rows if r["label"] == "disconnected"]
+    print(f"[data] override: {len(CONNECTED)} connected + {len(DISCONNECTED)} disconnected "
+          f"from {args.data_file}", flush=True)
 
 # ── Backends ────────────────────────────────────────────────────────────────
 _pt_cache, _ov_cache, _tok_cache = {}, {}, {}

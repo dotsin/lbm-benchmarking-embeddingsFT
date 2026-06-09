@@ -34,6 +34,10 @@ ap.add_argument("--variant", default="ov-bf16",
 ap.add_argument("--models", nargs="+", default=["pubmed","bodhi","biobert"],
     choices=["pubmed","bodhi","biobert"])
 ap.add_argument("--out-dir", default=None)
+ap.add_argument("--data-dir", default=None,
+    help="Directory of JSONL data files (schema: examples/README.md). "
+         "When set, B1/B2/B3/B5/B6/B7 read from this directory. "
+         "Missing files fall back to the embedded literals.")
 args = ap.parse_args()
 
 from config import PT_PATHS, OV_PATHS, MODELS as MODEL_LABELS
@@ -219,6 +223,38 @@ HARD_NEGATIVES = [
      "Generalised anxiety PHQ score indicates severe symptoms",
      "Anxiety about upcoming surgery is normal patient response"),
 ]
+
+# ── Optional data overrides from --data-dir ──────────────────────────────────
+if args.data_dir:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    from pathlib import Path as _P
+    from examples.load_pairs import (
+        CANONICAL_FILES,
+        load_domain_sentences,
+        load_biosses_style,
+        load_hard_negatives,
+    )
+    _dd = _P(args.data_dir)
+    _overrides = []
+    _domain_path = _dd / CANONICAL_FILES["domain"]
+    if _domain_path.exists():
+        DOMAIN_CORPUS = load_domain_sentences(_domain_path)
+        _overrides.append(f"DOMAIN_CORPUS={sum(len(v) for v in DOMAIN_CORPUS.values())} sents")
+    _biosses_path = _dd / CANONICAL_FILES["biosses"]
+    if _biosses_path.exists():
+        _rows = load_biosses_style(_biosses_path)
+        BIOSSES_STYLE_PAIRS = [(r["sentence_a"], r["sentence_b"], float(r["human_score"]))
+                               for r in _rows]
+        _overrides.append(f"BIOSSES_STYLE_PAIRS={len(BIOSSES_STYLE_PAIRS)}")
+    _hn_path = _dd / CANONICAL_FILES["hard_negatives"]
+    if _hn_path.exists():
+        _rows = load_hard_negatives(_hn_path)
+        HARD_NEGATIVES = [(r["anchor"], r["positive"], r["hard_negative"]) for r in _rows]
+        _overrides.append(f"HARD_NEGATIVES={len(HARD_NEGATIVES)}")
+    if _overrides:
+        print(f"[data] --data-dir {args.data_dir} → {' · '.join(_overrides)}", flush=True)
+    else:
+        print(f"[data] --data-dir {args.data_dir}: no recognised JSONL files; using embedded literals", flush=True)
 
 # ── Backends ────────────────────────────────────────────────────────────────
 _pt_cache, _ov_cache, _tok_cache = {}, {}, {}

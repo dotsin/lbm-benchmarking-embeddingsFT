@@ -117,6 +117,9 @@ OpenVINO acceleration deep-dive: [`docs/OV_ACCELERATION.md`](docs/OV_ACCELERATIO
 | Hardware config | `config.yaml` |
 | **LBM architecture & motivation** | [`docs/LBM_INTEGRATION.md`](docs/LBM_INTEGRATION.md) |
 | **OpenVINO acceleration deep-dive** | [`docs/OV_ACCELERATION.md`](docs/OV_ACCELERATION.md) |
+| **Examples & data formats** | [`examples/README.md`](examples/README.md) |
+| **Fine-tuning guide (datasets, BODHI, synthetic data, schemas)** | [`docs/FINETUNING.md`](docs/FINETUNING.md) |
+| Runnable quickstart | [`examples/quickstart_embed.py`](examples/quickstart_embed.py) |
 | Full throughput + profiling report | [`docs/FINAL_CONSOLIDATED_REPORT.md`](docs/FINAL_CONSOLIDATED_REPORT.md) |
 | Decision log (why NUMA, HT, INT8…) | [`docs/REASONING_QNA.md`](docs/REASONING_QNA.md) |
 | PyTorch throughput tables | [`docs/PYTORCH_RESULTS.md`](docs/PYTORCH_RESULTS.md) |

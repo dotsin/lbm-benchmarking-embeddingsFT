@@ -1,0 +1,10 @@
+{"sentence_a": "Blood-brain barrier prevents drug penetration into CNS", "sentence_b": "BBB selective barrier limits CNS access for pharmaceuticals", "human_score": 0.95}
+{"sentence_a": "Metformin reduces hepatic glucose production via AMPK", "sentence_b": "Metformin activates AMPK to decrease liver glucose output", "human_score": 0.92}
+{"sentence_a": "Hippocampus is central to new memory formation", "sentence_b": "Memory consolidation depends on the hippocampus", "human_score": 0.89}
+{"sentence_a": "Inflammation drives atherosclerotic plaque progression", "sentence_b": "Chronic inflammatory signalling worsens coronary atherosclerosis", "human_score": 0.86}
+{"sentence_a": "BRCA1 mutation increases hereditary breast cancer risk", "sentence_b": "Pathogenic BRCA1 variants raise lifetime risk of breast cancer", "human_score": 0.93}
+{"sentence_a": "PHQ-9 score above 15 indicates severe depressive disorder", "sentence_b": "GAD-7 score above 15 indicates severe generalised anxiety", "human_score": 0.42}
+{"sentence_a": "Elevated cortisol indicates HPA axis dysregulation", "sentence_b": "Suppressed TSH indicates hyperthyroid state", "human_score": 0.31}
+{"sentence_a": "BRCA1 mutation breast cancer risk", "sentence_b": "Stock market high volatility this quarter", "human_score": 0.02}
+{"sentence_a": "Insulin resistance precedes type 2 diabetes onset", "sentence_b": "Currency fluctuations affect international trade balances", "human_score": 0.01}
+{"sentence_a": "Major depressive episode requires two-week symptom persistence", "sentence_b": "Software deployment completed with rollback plan documented", "human_score": 0.02}

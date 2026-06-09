@@ -1,0 +1,5 @@
+{"anchor": "BRCA1 pathogenic variant breast cancer risk", "positive": "BRCA2 mutation hereditary cancer", "hard_negative": "BRCA1 protein DNA damage repair pathway", "domain": "genetics"}
+{"anchor": "Patient persistent low mood and hopelessness", "positive": "Depressive symptoms anhedonia and fatigue", "hard_negative": "Patient persistently elevated cortisol", "domain": "psychology"}
+{"anchor": "HbA1c 8.5% poor glycaemic control", "positive": "Glycated haemoglobin above target in diabetic patient", "hard_negative": "HbA1c 8.5% test performed at 08:00 fasting", "domain": "biomarkers"}
+{"anchor": "DNA methylation silences tumour suppressor genes", "positive": "Epigenetic silencing via promoter hypermethylation", "hard_negative": "DNA methylation patterns change with ageing", "domain": "genetics"}
+{"anchor": "Anxiety disorder GAD-7 score 15 severe", "positive": "Generalised anxiety PHQ score indicates severe symptoms", "hard_negative": "Anxiety about upcoming surgery normal response", "domain": "psychology"}
