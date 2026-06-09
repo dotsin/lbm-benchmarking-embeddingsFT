@@ -117,6 +117,7 @@ OpenVINO acceleration deep-dive: [`docs/OV_ACCELERATION.md`](docs/OV_ACCELERATIO
 | Hardware config | `config.yaml` |
 | **LBM architecture & motivation** | [`docs/LBM_INTEGRATION.md`](docs/LBM_INTEGRATION.md) |
 | **OpenVINO acceleration deep-dive** | [`docs/OV_ACCELERATION.md`](docs/OV_ACCELERATION.md) |
+| **Headline results (one page)** | [`RESULTS.md`](RESULTS.md) |
 | **Examples & data formats** | [`examples/README.md`](examples/README.md) |
 | **Fine-tuning guide (datasets, BODHI, synthetic data, schemas)** | [`docs/FINETUNING.md`](docs/FINETUNING.md) |
 | Runnable quickstart | [`examples/quickstart_embed.py`](examples/quickstart_embed.py) |
