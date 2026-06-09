@@ -2,13 +2,24 @@
 
 ## Hardware and toolchain
 
-The training, quantization, and full benchmark suite in this repository were produced on an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system kindly provided to Dotsin.ai by **Intel Corporation**. Without that machine — its 128 logical cores, 1 TB of DDR5-6400 memory, and on-die **AMX-BF16 / AMX-INT8** tile units — neither the two-pass fine-tune (Pass 1 multi-dataset → Pass 2 BODHI ontology triplets, ~21 h total wall-clock) nor the OpenVINO INT8 NNCF quantization sweep at production-scale batch sizes would have been feasible inside the project timeline. We are grateful to Intel for making this hardware available for both the research direction documented here and for the training of Dotsin's wider proprietary embedding and Large Behavioral Model (LBM) stack.
+The training, quantization, and full benchmark suite in this repository were produced on an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system (2 sockets × 32 cores, 128 logical CPUs, 1 TB DDR5-6400) made available to Dotsin.ai by **Intel Corporation**. The platform is what turned a CPU-only training and serving stack from a fallback option into a first-class production substrate for our biomedical embedding workloads. Concretely, the hardware delivered:
 
-We additionally acknowledge the open Intel software stack that this work depends on end-to-end:
+| Capability | Measurement | What it unlocks |
+|---|---|---|
+| **AMX-BF16 fine-tuning** | Pass 1 ~6.5 h, Pass 2 ~14.8 h (BODHI, 72 034 pairs, batch 128, MNRL + Matryoshka) | Two-pass BERT-base fine-tune iterated overnight per cycle |
+| **AMX-BF16 inference vs PyTorch FP32** | **4.6 – 6.2× throughput** across BioBERT / PubMedBERT / ELECTRA at bs=256 | Single-process serving budget meets real-time data-hub ingest |
+| **AMX-BF16 single-query latency** | **9 – 10 ms p50** (down from 1.3 – 2.9 s PyTorch FP32) — **113 – 145× latency reduction** | Real-time embed-on-arrival in the secure data hub without queueing |
+| **AMX-INT8 NNCF PTQ (production preset)** | **135 K – 182 K TPS** at 32 workers + HT, 600 clients, bs=256; p50 latency 57 – 67 ms; cosine fidelity ≥ 99.4 % vs FP32 | Early production target met on a single 2-socket node — no GPU fleet needed for first-wave deployment |
+| **Cross-platform headroom vs Ice Lake-SP (c6i)** | **17 – 27× speedup** at bs=256 (AMX BF16 vs c6i FP32); **3 – 4× speedup** (c6i VNNI INT8 vs c6i FP32) | Granite Rapids is the inflection where the CPU path beats commodity cloud serving for BERT-class embedding workloads |
+| **DRAM bandwidth at peak** | 113.5 GB/s sustained, ~139 GB/s saturation (~40 – 50 % of DDR5-6400 ceiling) | System remains **compute-bound on AMX tiles**, not memory-bound — directly informs the scaling and quantization decisions in [`docs/REASONING_QNA.md`](docs/REASONING_QNA.md) |
 
-- **OpenVINO™** (2026.1) and **NNCF** (3.1) — model export, INT8 post-training quantization, and AMX dispatch
+The combination of AMX tile throughput and 288 MiB L3 (144 MiB per NUMA node) means BERT-base BF16 weights (208 MB) sit fully in cache per node, which is the root cause of the 4.6 – 6.2× OpenVINO speedup over PyTorch eager mode. This is also why we are running our early production embedding traffic for the secure data hub on this hardware directly, rather than on GPUs — a single 2-socket node serves the full ingest path at the latency we need.
+
+We additionally use the open Intel software stack end-to-end:
+
+- **OpenVINO™** (2026.1) and **NNCF** (3.1) — model export, INT8 post-training quantization, AMX dispatch
 - **oneDNN** — AMX BF16 / AMX INT8 kernel routing under PyTorch and OpenVINO
-- **Intel® VTune™ Profiler** and **Intel® Application Performance Snapshot (APS)** — the microarchitectural data behind the profiling section in [`docs/FINAL_CONSOLIDATED_REPORT.md`](docs/FINAL_CONSOLIDATED_REPORT.md)
+- **Intel® VTune™ Profiler** and **Intel® Application Performance Snapshot (APS)** — the microarchitectural data behind the profiling tables in [`docs/FINAL_CONSOLIDATED_REPORT.md`](docs/FINAL_CONSOLIDATED_REPORT.md)
 
 All Intel marks are the property of Intel Corporation.
 

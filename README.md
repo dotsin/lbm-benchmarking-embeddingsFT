@@ -655,10 +655,18 @@ DRAM bandwidth at peak: ~113.5 GB/s (32srv+HT / 600c), rising to ~139 GB/s at sa
 
 ## Acknowledgements
 
-This work was made possible by an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system provided to Dotsin.ai by **Intel Corporation**. The two-pass fine-tune (Pass 1 multi-dataset → Pass 2 BODHI ontology triplets, ~21 h total wall-clock) and the OpenVINO INT8 quantization sweep all ran on this hardware via Intel's open AMX-BF16 / AMX-INT8 path (OpenVINO 2026.1, NNCF 3.1, oneDNN). We are grateful to Intel both for the device and for the open software stack that lets us route BERT-class workloads to AMX tiles directly.
+All training, quantization, and benchmark numbers in this repository were produced on an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system (128 logical CPUs, 1 TB DDR5-6400, AMX-BF16 / AMX-INT8) made available to Dotsin.ai by **Intel Corporation**. The platform delivered the measurable gains that the rest of this document is built on:
+
+- **4.6 – 6.2× throughput** at bs=256 from OpenVINO BF16 vs PyTorch FP32 across all three encoders, with cosine fidelity ≥ 99.4 % under INT8 PTQ.
+- **9 – 10 ms p50 single-query latency** — **113 – 145× lower than PyTorch FP32** — enabling embed-on-arrival in the secure data hub.
+- **135 K – 182 K TPS** at the production serving preset (32 workers + HT, 600 clients, bs=256); p50 57 – 67 ms, p99 114 ms.
+- **17 – 27× cross-platform speedup** vs Ice Lake-SP (c6i) FP32; **3 – 4×** vs c6i VNNI INT8.
+- Two-pass BERT-base fine-tune iterated overnight: Pass 1 ~6.5 h, Pass 2 BODHI ~14.8 h.
+
+This capacity headroom is why our **early production embedding traffic** for the secure data hub runs on this hardware directly — a single 2-socket Granite Rapids node serves the full ingest path at the latency our LBM streams require, without a GPU fleet behind it. The open Intel software stack (OpenVINO 2026.1, NNCF 3.1, oneDNN, VTune, APS) is what lets us dispatch BERT-class workloads to AMX tiles end-to-end. Full per-metric breakdown, profiling tables, and base-model / dataset credits in [`ACKNOWLEDGEMENTS.md`](ACKNOWLEDGEMENTS.md).
 
 The weights and benchmark suite released here are the **open public version of one layer of Dotsin.ai's larger system**. Dotsin maintains a deeper-tuned proprietary causal-similarity embedding stack trained against the full BODHI ontology and additional behavioural corpora that we cannot publish for consent, privacy, and clinical-evidence reasons; the LBM service and the proprietary LBM graph remain closed. This repository exists so the open biomedical-NLP community can see the research direction, evaluate the causal-axis framing on their own data, and build something stronger on top of it.
 
-Full acknowledgements, base-model credits, and dataset attributions: [`ACKNOWLEDGEMENTS.md`](ACKNOWLEDGEMENTS.md). Machine-readable software citation: [`CITATION.cff`](CITATION.cff). Paper: [arXiv:2606.09672](https://arxiv.org/abs/2606.09672).
+Paper: [arXiv:2606.09672](https://arxiv.org/abs/2606.09672) · Software citation: [`CITATION.cff`](CITATION.cff).
 
 *Intel, the Intel logo, Intel Xeon, AMX, OpenVINO, oneAPI, oneDNN and VTune are trademarks of Intel Corporation or its subsidiaries.*

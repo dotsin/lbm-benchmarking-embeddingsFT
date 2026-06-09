@@ -13,7 +13,7 @@ The Pass 2 step is what installs the second axis (causal similarity) on top of t
 
 ## 1. Hardware & environment
 
-The production run used a dual-socket **Intel® Xeon® 6737P (Granite Rapids)** kindly provided to Dotsin.ai by **Intel Corporation** — 2 sockets × 32 cores, 128 logical CPUs, 1 TB DDR5-6400, AMX-BF16. Pass 1 takes ~6.5 h, Pass 2 takes ~14.8 h on this hardware. See [`ACKNOWLEDGEMENTS.md`](../ACKNOWLEDGEMENTS.md) for the full hardware and toolchain credit.
+The production run used a dual-socket **Intel® Xeon® 6737P (Granite Rapids)** — 2 sockets × 32 cores, 128 logical CPUs, 1 TB DDR5-6400, AMX-BF16 — made available to Dotsin.ai by **Intel Corporation**. Pass 1 finishes in **~6.5 h**, Pass 2 (BODHI, 72 034 pairs) in **~14.8 h**: both passes fit inside a single overnight iteration cycle, which is what makes the two-stage methodology practical to develop on. The same hardware then carries our early production embedding traffic for the secure data hub at **9 – 10 ms p50 single-query latency** and **135 – 182 K TPS** at the OV-INT8 serving preset — no GPU fleet required for first-wave deployment. Full hardware-side numbers and the AMX / OpenVINO / oneDNN toolchain attribution are in [`../ACKNOWLEDGEMENTS.md`](../ACKNOWLEDGEMENTS.md).
 
 You do **not** need this exact box. The training script auto-scales to whatever cores it sees and switches AMX kernels on/off via `ONEDNN_MAX_CPU_ISA`. On a single-socket 16-core machine expect ~10× longer wall-clock. GPU training is supported by `sentence-transformers` out of the box but the script defaults to CPU + AMX because the production fleet is CPU-only.
 

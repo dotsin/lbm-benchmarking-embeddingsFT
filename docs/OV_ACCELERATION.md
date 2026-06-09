@@ -347,7 +347,14 @@ Saturates by bs=32–64. The dequantization kernel becomes the throughput bottle
 
 ## Acknowledgements
 
-All inference, quantization, and benchmark numbers in this document were produced on an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system provided to Dotsin.ai by **Intel Corporation**, using Intel's open AMX-BF16 / AMX-INT8 path via OpenVINO 2026.1, NNCF 3.1, and oneDNN. We thank Intel for the hardware and for the open software stack that lets us dispatch BERT-class workloads to AMX tiles directly. The weights released here are the open public version of one layer of Dotsin.ai's larger embedding system; full credits in [`../ACKNOWLEDGEMENTS.md`](../ACKNOWLEDGEMENTS.md).
+All inference, quantization, and benchmark numbers in this document were produced on an **Intel® Xeon® 6737P (Granite Rapids)** dual-socket system (128 logical CPUs, 1 TB DDR5-6400, AMX-BF16 / AMX-INT8) made available to Dotsin.ai by **Intel Corporation**. The concrete capacity it delivers:
+
+- OpenVINO BF16 throughput **4.6 – 6.2× over PyTorch FP32** at bs=256 across BioBERT / PubMedBERT / ELECTRA.
+- Single-query p50 latency **9 – 10 ms** — a **113 – 145× reduction** vs PyTorch FP32 on the same models.
+- NNCF INT8 serving preset reaches **135 K – 182 K TPS** at 32 workers + HT with cosine fidelity ≥ 99.4 % vs FP32.
+- **17 – 27× speedup** vs Ice Lake-SP (c6i FP32) at bs=256; **3 – 4×** vs c6i VNNI INT8.
+
+That envelope is what carries our **early production embedding traffic** for the secure data hub on this single 2-socket node, at the latency our LBM information-stream assembly requires — without a GPU fleet in the path. The open AMX / OpenVINO 2026.1 / NNCF 3.1 / oneDNN toolchain is what lets the BERT-class workload land on AMX tiles directly. The weights released here are the open public version of one layer of Dotsin.ai's larger embedding system; full hardware capacity table and credits in [`../ACKNOWLEDGEMENTS.md`](../ACKNOWLEDGEMENTS.md).
 
 *Intel, the Intel logo, Intel Xeon, AMX, OpenVINO, oneAPI, oneDNN and VTune are trademarks of Intel Corporation or its subsidiaries.*
 *Source report: BioBERT_OV_Benchmark_Report_V2.docx, April 20, 2026*
