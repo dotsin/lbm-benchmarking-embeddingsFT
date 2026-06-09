@@ -1,0 +1,113 @@
+{
+  "pubmed": {
+    "pytorch_fp16": {
+      "mean_cosine": 0.9999985098838806,
+      "min_cosine": 0.999997079372406,
+      "std_cosine": 5.25287930486229e-07,
+      "pct_above_99": 100.0,
+      "inference_s": 0.247
+    },
+    "pytorch_bf16": {
+      "mean_cosine": 0.9999112486839294,
+      "min_cosine": 0.999799907207489,
+      "std_cosine": 3.3140760933747515e-05,
+      "pct_above_99": 100.0,
+      "inference_s": 0.236
+    },
+    "ov_bf16": {
+      "mean_cosine": 0.9999997615814209,
+      "min_cosine": 0.999999463558197,
+      "std_cosine": 1.093654518058429e-07,
+      "pct_above_99": 100.0,
+      "inference_s": 0.859
+    },
+    "ov_int8": {
+      "mean_cosine": 0.9972004294395447,
+      "min_cosine": 0.9943363666534424,
+      "std_cosine": 0.0008753340225666761,
+      "pct_above_99": 100.0,
+      "inference_s": 1.091
+    },
+    "ov_int4": {
+      "mean_cosine": 0.9035637974739075,
+      "min_cosine": 0.8690410852432251,
+      "std_cosine": 0.014683166518807411,
+      "pct_above_99": 0.0,
+      "inference_s": 0.504
+    }
+  },
+  "bodhi": {
+    "pytorch_fp16": {
+      "mean_cosine": 0.9999985098838806,
+      "min_cosine": 0.9999967217445374,
+      "std_cosine": 5.483411200657429e-07,
+      "pct_above_99": 100.0,
+      "inference_s": 0.214
+    },
+    "pytorch_bf16": {
+      "mean_cosine": 0.9998947381973267,
+      "min_cosine": 0.9995896816253662,
+      "std_cosine": 6.918075087014586e-05,
+      "pct_above_99": 100.0,
+      "inference_s": 0.207
+    },
+    "ov_bf16": {
+      "mean_cosine": 0.9999997615814209,
+      "min_cosine": 0.9999994039535522,
+      "std_cosine": 1.5618995519162127e-07,
+      "pct_above_99": 100.0,
+      "inference_s": 0.454
+    },
+    "ov_int8": {
+      "mean_cosine": 0.9974173903465271,
+      "min_cosine": 0.9953151941299438,
+      "std_cosine": 0.000690234883222729,
+      "pct_above_99": 100.0,
+      "inference_s": 1.149
+    },
+    "ov_int4": {
+      "mean_cosine": 0.9165619015693665,
+      "min_cosine": 0.8981533050537109,
+      "std_cosine": 0.011779511347413063,
+      "pct_above_99": 0.0,
+      "inference_s": 0.495
+    }
+  },
+  "biobert": {
+    "pytorch_fp16": {
+      "mean_cosine": 0.9999997615814209,
+      "min_cosine": 0.9999995231628418,
+      "std_cosine": 1.2597138265846297e-07,
+      "pct_above_99": 100.0,
+      "inference_s": 0.218
+    },
+    "pytorch_bf16": {
+      "mean_cosine": 0.999975323677063,
+      "min_cosine": 0.9999668598175049,
+      "std_cosine": 3.93903565054643e-06,
+      "pct_above_99": 100.0,
+      "inference_s": 0.192
+    },
+    "ov_bf16": {
+      "mean_cosine": 0.9999998807907104,
+      "min_cosine": 0.9999996423721313,
+      "std_cosine": 8.773566406716782e-08,
+      "pct_above_99": 100.0,
+      "inference_s": 0.464
+    },
+    "ov_int8": {
+      "mean_cosine": 0.9948674440383911,
+      "min_cosine": 0.9931882619857788,
+      "std_cosine": 0.0008136684191413224,
+      "pct_above_99": 100.0,
+      "inference_s": 1.081
+    },
+    "ov_int4": {
+      "mean_cosine": 0.9852502346038818,
+      "min_cosine": 0.9806112051010132,
+      "std_cosine": 0.0019334767712280154,
+      "pct_above_99": 0.0,
+      "inference_s": 0.511
+    }
+  }
+}

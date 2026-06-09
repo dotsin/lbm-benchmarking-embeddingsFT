@@ -1,0 +1,23 @@
+# Biomedical BERT Inference Benchmark
+# Reference: 2× Intel Xeon 6737P, Ubuntu 24.04.4 LTS, kernel 6.8.0-110-generic
+#
+# Install:
+#   python3 -m venv .venv && source .venv/bin/activate
+#   pip install torch==2.11.0 --extra-index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements.txt
+
+openvino==2026.1.0
+openvino-tokenizers==2026.1.0.0
+nncf==3.1.0
+transformers==4.48.0
+optimum==1.23.1
+optimum-intel==1.18.3
+safetensors>=0.4
+huggingface_hub>=0.22
+tokenizers>=0.19
+pyyaml>=6.0
+numpy>=1.26
+scipy>=1.12
+aiohttp>=3.9
+fastapi>=0.110
+uvicorn>=0.29

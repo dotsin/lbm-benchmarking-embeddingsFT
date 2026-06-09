@@ -1,0 +1,121 @@
+{
+  "run_at": "2026-05-13T07:55:27.690719",
+  "variant": "pytorch-int8",
+  "host": "xeon_6737p",
+  "n_cores_visible": 128,
+  "threads_used": 64,
+  "batch_sizes": [
+    64,
+    128,
+    256,
+    384,
+    512
+  ],
+  "models": {
+    "pubmed": {
+      "accuracy": {
+        "mean_cosine": 0.9302043318748474,
+        "min_cosine": 0.898612380027771,
+        "std_cosine": 0.013458010740578175,
+        "pct_above_99": 0.0
+      },
+      "throughput": {
+        "64": {
+          "sentences_per_sec": 46.75,
+          "tokens_per_sec": 626.9,
+          "elapsed_s": 21.904
+        },
+        "128": {
+          "sentences_per_sec": 42.98,
+          "tokens_per_sec": 576.4,
+          "elapsed_s": 23.824
+        },
+        "256": {
+          "sentences_per_sec": 46.32,
+          "tokens_per_sec": 621.2,
+          "elapsed_s": 22.107
+        },
+        "384": {
+          "sentences_per_sec": 42.42,
+          "tokens_per_sec": 568.8,
+          "elapsed_s": 24.142
+        },
+        "512": {
+          "sentences_per_sec": 39.42,
+          "tokens_per_sec": 528.6,
+          "elapsed_s": 25.976
+        }
+      }
+    },
+    "bodhi": {
+      "accuracy": {
+        "mean_cosine": 0.929683268070221,
+        "min_cosine": 0.8809651136398315,
+        "std_cosine": 0.017440345138311386,
+        "pct_above_99": 0.0
+      },
+      "throughput": {
+        "64": {
+          "sentences_per_sec": 48.86,
+          "tokens_per_sec": 655.3,
+          "elapsed_s": 20.957
+        },
+        "128": {
+          "sentences_per_sec": 47.83,
+          "tokens_per_sec": 641.4,
+          "elapsed_s": 21.41
+        },
+        "256": {
+          "sentences_per_sec": 33.12,
+          "tokens_per_sec": 444.1,
+          "elapsed_s": 30.922
+        },
+        "384": {
+          "sentences_per_sec": 35.87,
+          "tokens_per_sec": 481.0,
+          "elapsed_s": 28.547
+        },
+        "512": {
+          "sentences_per_sec": 39.73,
+          "tokens_per_sec": 532.7,
+          "elapsed_s": 25.776
+        }
+      }
+    },
+    "biobert": {
+      "accuracy": {
+        "mean_cosine": 0.7588309645652771,
+        "min_cosine": 0.6785287857055664,
+        "std_cosine": 0.03309031203389168,
+        "pct_above_99": 0.0
+      },
+      "throughput": {
+        "64": {
+          "sentences_per_sec": 47.49,
+          "tokens_per_sec": 997.3,
+          "elapsed_s": 21.563
+        },
+        "128": {
+          "sentences_per_sec": 41.95,
+          "tokens_per_sec": 880.9,
+          "elapsed_s": 24.41
+        },
+        "256": {
+          "sentences_per_sec": 36.88,
+          "tokens_per_sec": 774.5,
+          "elapsed_s": 27.765
+        },
+        "384": {
+          "sentences_per_sec": 37.12,
+          "tokens_per_sec": 779.5,
+          "elapsed_s": 27.586
+        },
+        "512": {
+          "sentences_per_sec": 38.95,
+          "tokens_per_sec": 817.9,
+          "elapsed_s": 26.292
+        }
+      }
+    }
+  }
+}

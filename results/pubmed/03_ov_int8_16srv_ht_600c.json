@@ -1,0 +1,18 @@
+{
+  "variant": "ov-int8",
+  "model": "pubmed",
+  "model_label": "PubMedBERT Pass1",
+  "architecture": "16srv+HT",
+  "use_ht": true,
+  "servers": 16,
+  "clients": 600,
+  "max_bs": 256,
+  "duration_s": 40.08,
+  "total_requests": 426455,
+  "requests_per_sec": 10641.39,
+  "tokens_per_sec": 142701.1,
+  "response_time_p50_ms": 52.59,
+  "response_time_p95_ms": 91.51,
+  "response_time_p99_ms": 114.65,
+  "response_time_mean_ms": 56.33
+}

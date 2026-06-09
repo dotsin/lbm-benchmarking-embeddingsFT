@@ -1,0 +1,5 @@
+Function	CPU Time	CPU Time:Effective Time	CPU Time:Spin Time	CPU Time:Overhead Time	Module	Function (Full)	Source File	Start Address
+_PyEval_EvalFrameDefault	0.010015	0.010015	0.0	0.0	python3.12	_PyEval_EvalFrameDefault	[Unknown]	0x5d6900
+func@0x5ff540	0.010011	0.010011	0.0	0.0	python3.12	func@0x5ff540	[Unknown]	0x5ff540
+func@0x5d5960	0.009989	0.009989	0.0	0.0	python3.12	func@0x5d5960	[Unknown]	0x5d5960
+func@0x61cc10	0.009985	0.009985	0.0	0.0	python3.12	func@0x61cc10	[Unknown]	0x61cc10

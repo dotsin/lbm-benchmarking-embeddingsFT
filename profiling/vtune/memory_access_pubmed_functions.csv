@@ -1,0 +1,7 @@
+Function	CPU Time	Memory Bound(%)	Memory Bound:L1 Bound(%)	Memory Bound:L2 Bound(%)	Memory Bound:L3 Bound(%)	Memory Bound:DRAM Bound(%)	Memory Bound:Store Bound(%)	Loads	Stores	LLC Miss Count	LLC Miss Count:Local Memory Access Count	LLC Miss Count:Remote Memory Access Count	LLC Miss Count:Remote Cache Access Count	Module	Function (Full)	Source File	Start Address
+_PyEval_EvalFrameDefault	0.015000	0.0	0.0	0.0	0.0	0.0	0.0	0	0	0	0	0	0	python3.12	_PyEval_EvalFrameDefault	[Unknown]	0x5d6900
+PyEval_SaveThread	0.005000	0.0	0.0	0.0	0.0	0.0	0.0	0	0	0	0	0	0	python3.12	PyEval_SaveThread	[Unknown]	0x5fc2d0
+__count_memcg_events	0.005000	0.0	0.0	0.0	0.0	0.0	0.0	0	0	0	0	0	0	vmlinux	__count_memcg_events	[Unknown]	0xffffffff8c0cea80
+func@0x572800	0.005000	0.0	0.0	0.0	0.0	0.0	0.0	0	0	0	0	0	0	python3.12	func@0x572800	[Unknown]	0x572800
+func@0x61dbc0	0.005000	0.0	0.0	0.0	0.0	0.0	0.0	0	0	0	0	0	0	python3.12	func@0x61dbc0	[Unknown]	0x61dbc0
+func@0x54d100	0.0	0.0	100.0	0.0	0.0	0.0	0.0	0	0	0	0	0	0	python3.12	func@0x54d100	[Unknown]	0x54d100

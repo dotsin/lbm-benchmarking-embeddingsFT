@@ -1,0 +1,18 @@
+{
+  "variant": "ov-bf16",
+  "model": "biobert",
+  "model_label": "BioBERT Fine-Tuned",
+  "architecture": "32srv+HT",
+  "use_ht": true,
+  "servers": 32,
+  "clients": 600,
+  "max_bs": 256,
+  "duration_s": 40.11,
+  "total_requests": 237133,
+  "requests_per_sec": 5912.37,
+  "tokens_per_sec": 124159.8,
+  "response_time_p50_ms": 101.16,
+  "response_time_p95_ms": 109.21,
+  "response_time_p99_ms": 112.55,
+  "response_time_mean_ms": 101.32
+}

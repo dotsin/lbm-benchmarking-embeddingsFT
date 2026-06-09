@@ -1,0 +1,18 @@
+{
+  "variant": "ov-int8",
+  "model": "bodhi",
+  "model_label": "PubMedBERT BODHI",
+  "architecture": "16srv+HT",
+  "use_ht": true,
+  "servers": 16,
+  "clients": 600,
+  "max_bs": 256,
+  "duration_s": 40.1,
+  "total_requests": 414173,
+  "requests_per_sec": 10329.33,
+  "tokens_per_sec": 138516.4,
+  "response_time_p50_ms": 53.38,
+  "response_time_p95_ms": 96.59,
+  "response_time_p99_ms": 116.14,
+  "response_time_mean_ms": 58.0
+}

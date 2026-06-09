@@ -1,0 +1,18 @@
+{
+  "variant": "ov-int8",
+  "model": "biobert",
+  "model_label": "BioBERT Fine-Tuned",
+  "architecture": "32srv+HT",
+  "use_ht": true,
+  "servers": 32,
+  "clients": 600,
+  "max_bs": 256,
+  "duration_s": 40.12,
+  "total_requests": 348577,
+  "requests_per_sec": 8688.99,
+  "tokens_per_sec": 182468.8,
+  "response_time_p50_ms": 67.35,
+  "response_time_p95_ms": 74.44,
+  "response_time_p99_ms": 125.48,
+  "response_time_mean_ms": 68.91
+}
